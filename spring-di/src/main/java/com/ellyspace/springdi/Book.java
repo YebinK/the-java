@@ -1,5 +1,6 @@
 package com.ellyspace.springdi;
 
+@MyAnnotation(value = "값값")
 public class Book {
     private static String B = "BOOK";
     private static final String C = "COOK";

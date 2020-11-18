@@ -61,5 +61,13 @@ public class App {
         });
         System.err.println("==========9==========");
 
+        //어노테이션 조회하기
+        Arrays.stream(Book.class.getAnnotations()).forEach(System.err::println);
+        System.err.println("==========10==========");
+
+        //상위 클래스의 어노테이션 조회하기 (@Inherit 기능)
+        Arrays.stream(MyBook.class.getAnnotations()).forEach(System.err::println);
+        System.err.println("==========11==========");
+
     }
 }
