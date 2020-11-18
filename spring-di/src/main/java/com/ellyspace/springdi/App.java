@@ -65,9 +65,18 @@ public class App {
         Arrays.stream(Book.class.getAnnotations()).forEach(System.err::println);
         System.err.println("==========10==========");
 
-        //상위 클래스의 어노테이션 조회하기 (@Inherit 기능)
-        Arrays.stream(MyBook.class.getAnnotations()).forEach(System.err::println);
+        //어노테이션의 값들 가져오기
+        Arrays.stream(Book.class.getAnnotations()).forEach(annotation -> {
+            MyAnnotation myAnnotation = (MyAnnotation) annotation;
+            System.err.println(myAnnotation.name());
+            System.err.println(myAnnotation.number());
+            System.err.println(myAnnotation.value());
+        });
         System.err.println("==========11==========");
 
+
+        //상위 클래스의 어노테이션 조회하기 (@Inherit 기능)
+        Arrays.stream(MyBook.class.getAnnotations()).forEach(System.err::println);
+        System.err.println("==========12==========");
     }
 }
