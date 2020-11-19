@@ -1,10 +1,14 @@
 package com.ellyspace.springdi;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 public class App {
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws Exception {
         //클래스에서 Class 접근하기
         Class<Book> bookClass = Book.class;
 
@@ -78,5 +82,37 @@ public class App {
         //상위 클래스의 어노테이션 조회하기 (@Inherit 기능)
         Arrays.stream(MyBook.class.getAnnotations()).forEach(System.err::println);
         System.err.println("==========12==========");
+
+        //클래스 정보 수정 및 실행
+        modify();
+        System.err.println("==========13==========");
+    }
+
+
+    private static void modify() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException {
+        Class<?> bookClass = Class.forName("com.ellyspace.springdi.Book2");
+        Constructor<?> constructor = bookClass.getConstructor(String.class);
+        Book2 book2 = (Book2) constructor.newInstance("BB_BB");
+
+        //필드 값 접근, 변경
+        Field a = Book2.class.getDeclaredField("A");
+        System.err.println("기존 값: " + a.get(null)); //a는 static 변수라서 인스턴스가 필요 없음. -> null
+        a.set(null, "AAA");
+        System.err.println("변경된 값: " + a.get(null));
+
+        Field b = Book2.class.getDeclaredField("B");
+        b.setAccessible(true);
+        System.err.println("기존 값: " + b.get(book2)); //b는 인스턴스가 필요함.
+        b.set(book2, "BBBBB");
+        System.err.println("변경된 값: " + b.get(book2));
+
+        //메소드 실행
+        Method c = Book2.class.getDeclaredMethod("c");
+        c.setAccessible(true);
+        c.invoke(book2); //c 메소드를 호출한다.
+
+        Method sum = Book2.class.getDeclaredMethod("sum", int.class, int.class);
+        int invoke = (int) sum.invoke(book2, 1, 2);
+        System.err.println(invoke);
     }
 }
