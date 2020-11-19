@@ -1,4 +1,4 @@
-package com.ellyspace.springdi;
+package com.ellyspace.springdi.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

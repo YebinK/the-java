@@ -1,4 +1,4 @@
-package com.ellyspace.springdi;
+package com.ellyspace.springdi.book;
 
 public class Book2 {
 

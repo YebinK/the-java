@@ -1,4 +1,4 @@
-package com.ellyspace.springdi;
+package com.ellyspace.springdi.book;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -17,7 +17,7 @@ public class App {
         Class<? extends Book> instanceWay = book.getClass();
 
         //String으로 Class 접근하기
-        Class<?> stringWay = Class.forName("com.ellyspace.springdi.Book");
+        Class<?> stringWay = Class.forName("com.ellyspace.springdi.book.Book");
 
         //어떻게든 접근을 했다면...
         Arrays.stream(bookClass.getFields()).forEach(System.err::println); //public으로 정의된 d밖에 안 보인다.
@@ -90,7 +90,7 @@ public class App {
 
 
     private static void modify() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException {
-        Class<?> bookClass = Class.forName("com.ellyspace.springdi.Book2");
+        Class<?> bookClass = Class.forName("com.ellyspace.springdi.book.Book2");
         Constructor<?> constructor = bookClass.getConstructor(String.class);
         Book2 book2 = (Book2) constructor.newInstance("BB_BB");
 

@@ -1,4 +1,4 @@
-package com.ellyspace.springdi;
+package com.ellyspace.springdi.book;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

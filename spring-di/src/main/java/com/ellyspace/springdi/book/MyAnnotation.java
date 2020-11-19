@@ -1,4 +1,4 @@
-package com.ellyspace.springdi;
+package com.ellyspace.springdi.book;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;

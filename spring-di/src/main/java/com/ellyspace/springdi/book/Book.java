@@ -1,4 +1,4 @@
-package com.ellyspace.springdi;
+package com.ellyspace.springdi.book;
 
 @MyAnnotation(value = "값값")
 public class Book {

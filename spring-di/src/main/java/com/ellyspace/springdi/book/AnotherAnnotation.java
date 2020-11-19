@@ -1,4 +1,4 @@
-package com.ellyspace.springdi;
+package com.ellyspace.springdi.book;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
