@@ -16,10 +16,13 @@ class CarServiceTest {
 
                 @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    System.out.println("========BEFORE");
-                    method.invoke(carService, args);
-                    System.out.println("========AFTER");
-                    return null;
+                    if (method.getName().equals("go")) {
+                        System.out.println("========BEFORE GO");
+                        Object invoke = method.invoke(carService, args);
+                        System.out.println("========AFTER GO");
+                        return invoke;
+                    }
+                    return method.invoke(carService, args);
                 }
             });
 
@@ -28,5 +31,6 @@ class CarServiceTest {
         Car car = new Car();
         car.setColor("GREEN");
         carService.go();
+        carService.stop();
     }
 }
