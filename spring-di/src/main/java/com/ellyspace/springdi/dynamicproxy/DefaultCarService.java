@@ -8,6 +8,11 @@ public class DefaultCarService implements CarService {
     }
 
     @Override
+    public void goWithColor(Car car) {
+        System.out.println("=============GO by DefaultCarService with color " + car.getColor());
+    }
+
+    @Override
     public void stop() {
         System.out.println("=============STOP by DefaultCarService");
     }

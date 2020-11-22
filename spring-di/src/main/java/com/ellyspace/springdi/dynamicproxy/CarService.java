@@ -4,5 +4,7 @@ public interface CarService {
 
     void go();
 
+    void goWithColor(Car car);
+
     void stop();
 }
